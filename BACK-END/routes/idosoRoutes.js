@@ -1,12 +1,22 @@
+// BACK-END/routes/idosoRoutes.js
 const express = require("express");
 const router = express.Router();
+const controller = require("../controllers/idosoController");
+const upload = require("../middlewares/upload");
 
-const idosoController = require("../controllers/idosoController");
+// LISTAR
+router.get("/", controller.listar);
 
-router.get("/", idosoController.index);
-router.get("/:id", idosoController.show);
-router.post("/", idosoController.store);
-router.put("/:id", idosoController.update);
-router.delete("/:id", idosoController.destroy);
+// BUSCAR
+router.get("/:id", controller.buscar);
+
+// CRIAR COM FOTO
+router.post("/", upload.single("foto"), controller.criar);
+
+// ATUALIZAR COM FOTO
+router.put("/:id", upload.single("foto"), controller.atualizar);
+
+// DELETAR
+router.delete("/:id", controller.deletar);
 
 module.exports = router;

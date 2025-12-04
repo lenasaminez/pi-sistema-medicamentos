@@ -1,26 +1,61 @@
-const db = require("../config/database");
+const mongoose = require("mongoose");
 
-module.exports = {
-  async findAll() {
-    const [rows] = await db.query("SELECT * FROM idoso");
-    return rows;
+const IdosoSchema = new mongoose.Schema(
+  {
+    nome: { type: String, required: true },
+    data_nasc: { type: Date, required: true },
+    telefone: { type: String, required: false },
+    foto: { type: String, default: "" },
+    informacoes: { type: String, default: "" },
+
+    contatos: [
+      {
+        nome: String,
+        telefone: String
+      }
+    ],
+
+    doencas: [
+      {
+        diagnostico: String,
+        data: Date,
+        medico: String,
+        observacoes: String
+      }
+    ],
+
+    medicamentos: [
+      {
+        nome: String,
+        dose: String,
+        horario: String,
+        ativo: { type: Boolean, default: true }
+      }
+    ],
+
+    cuidadores: [
+      {
+        nome: String,
+        telefone: String
+      }
+    ],
+
+    sinais_vitais: [
+      {
+        data: Date,
+        hora: String,
+        pressao_sistolica: Number,
+        pressao_diastolica: Number,
+        batimentos: Number,
+        temperatura: Number,
+        saturacao: Number,
+        peso: Number,
+        glicemia: Number,
+        observacoes: String
+      }
+    ]
   },
+  { timestamps: true }
+);
 
-  async findById(id) {
-    const [rows] = await db.query("SELECT * FROM idoso WHERE id_usuario = ?", [id]);
-    return rows[0];
-  },
-
-  async create(data) {
-    const { nome, genero, data_nascimento, contatos_emergencia, historico_clinico, id_adm } = data;
-
-    const [result] = await db.query(
-      `INSERT INTO idoso 
-       (nome, genero, data_nascimento, contatos_emergencia, historico_clinico, id_adm) 
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [nome, genero, data_nascimento, contatos_emergencia, historico_clinico, id_adm]
-    );
-
-    return { id: result.insertId, ...data };
-  }
-};
+module.exports = mongoose.model("Idoso", IdosoSchema);
