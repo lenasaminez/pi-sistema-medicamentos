@@ -40,7 +40,7 @@ module.exports = {
       const body = req.body || {};
 
       const payload = {
-        nome: body.nome?.trim(),
+        nome: body.nomeCompleto?.trim(),
         cpf: body.cpf?.trim(),
         telefone: body.telefone?.trim(),
         email: body.email?.trim(),

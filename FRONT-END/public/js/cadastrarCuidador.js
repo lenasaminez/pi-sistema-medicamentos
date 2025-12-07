@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Cuidador cadastrado com sucesso!");
       }
 
-      window.location.href = "/pages/cuidadores/cuidadores.html";
+      window.location.href = "/pages/cuidadores";
     } catch (err) {
       console.error(err);
       alert(err?.response?.data?.error || "Erro ao salvar cuidador.");
