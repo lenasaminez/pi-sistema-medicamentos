@@ -8,20 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="flex flex-1 z-50">
     <!-- SIDEBAR (Shell fixo) -->
     <aside
-      class="fixed top-0 flex h-full min-h-screen w-64 flex-col justify-between border-r border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#18262b] p-4 z-50"
+      class="fixed top-0 flex h-full min-h-screen w-64 flex-col justify-start border-r border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#18262b] p-4 z-50"
     >
-      <div class="flex flex-col gap-4">
-        <div
-          class="flex items-center gap-4 text-[#0d181b] dark:text-white px-3"
-        >
-          <span
-            class="material-symbols-outlined text-primary"
-            style="font-size: 24px"
-            >health_and_safety</span
+       <div class="flex flex-col items-center gap-3 text-center">
+          <div
+            class="relative flex items-center justify-center gap-3 rounded-full h-auto w-auto overflow-hidden"
           >
-          <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">
-            Cuidar+
-          </h2>
+            <img src="/public/logo.png" class="w-32 h-32"></img>
+          </div>
         </div>
 
         <div class="flex flex-col gap-2 mt-6">

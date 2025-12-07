@@ -1,1 +1,0 @@
-// Alertas e interatividade nas páginas
